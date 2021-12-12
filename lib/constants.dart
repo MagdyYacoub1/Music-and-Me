@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Colors that we use in our app
-const kPrimaryColor = Color(0xFF0C9869);
 const kTextColor = Colors.black;
-const kBackgroundColor = Colors.white;
 const kContextColor = Color(0xFFFFFFF4);
 const kGreyColor = Colors.grey;
 
@@ -19,7 +17,11 @@ const TextStyle contextTextStyle = TextStyle(
   fontSize: 23.0,
   fontWeight: FontWeight.w900,
 );
-
+const TextStyle secondaryContextTextStyle = TextStyle(
+  fontSize: 17.0,
+  fontWeight: FontWeight.w500,
+  color: kGreyColor,
+);
 const TextStyle contextGreyTextStyle = TextStyle(
   fontSize: 23.0,
   color: kContextColor,
