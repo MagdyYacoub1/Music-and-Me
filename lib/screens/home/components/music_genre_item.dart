@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -7,77 +8,89 @@ class MusicGenreItem extends StatelessWidget {
       {Key? key,
       required this.image,
       required this.genre,
-      required this.cardColor})
+      required this.cardColor,
+      required this.makeBigger})
       : super(key: key);
 
   final String image;
   final String genre;
   final Color cardColor;
+  final bool makeBigger;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(
-        horizontal: 15.0,
-        vertical: 0.0,
+    return Container(
+      width: 190.0,
+      margin: EdgeInsets.only(
+        left: 15.0,
+        right: 15.0,
+        top: makeBigger ? 0.0 : 30.0,
+        bottom: 15.0,
       ),
-      color: cardColor,
-      shadowColor: cardColor,
-      shape: RoundedRectangleBorder(
+      decoration: BoxDecoration(
+        color: cardColor,
         borderRadius: BorderRadius.circular(25.0),
+        boxShadow: [
+          makeBigger
+              ? BoxShadow(
+                  color: cardColor.withOpacity(0.3),
+                  spreadRadius: 2.0,
+                  blurRadius: 7,
+                  offset: Offset(7, 7),
+                )
+              : BoxShadow(
+                  color: Colors.transparent,
+                ),
+        ],
       ),
-      elevation: 7.0,
-      child: Container(
-        width: 190.0,
-        height: 60.0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10.0,
-            vertical: 20.0,
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(
-                    Icons.more_vert,
-                    size: 30.0,
-                    color: kGreyColor,
-                  )
-                ],
-              ),
-              Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 8.0,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        ImageIcon(
-                          AssetImage(
-                            "assets/images/" + image,
-                          ),
-                          size: 40.0,
-                          color: kContextColor,
-                        ),
-                        SizedBox(height: 7.0),
-                        Text(
-                          genre,
-                          style: contextGreyTextStyle,
-                        ),
-                      ],
-                    ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 20.0,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.more_vert,
+                  size: 30.0,
+                  color: kGreyColor,
+                )
+              ],
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    right: 8.0,
                   ),
-                ],
-              ),
-            ],
-          ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      ImageIcon(
+                        AssetImage(
+                          image,
+                        ),
+                        size: 40.0,
+                        color: kContextColor,
+                      ),
+                      SizedBox(height: 7.0),
+                      Text(
+                        genre,
+                        style: contextGreyTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
