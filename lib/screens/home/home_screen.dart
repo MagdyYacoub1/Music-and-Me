@@ -1,9 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:me_music/generated/assets.dart';
+import 'package:me_music/models/Favourite.dart';
 import 'package:me_music/models/music_genres.dart';
 
 import '../../constants.dart';
+import 'components/favourite_item.dart';
 import 'components/music_genre_item.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,9 +15,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ScrollController controller = ScrollController();
+  double topContainerIndex = 0;
+
+  @override
+  void initState() {
+    controller.addListener(() {
+      double value = controller.offset / 180;
+      setState(() {
+        topContainerIndex = value;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -55,17 +77,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       image: DecorationImage(
                         alignment: Alignment.centerLeft,
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/images/headphone3.png"),
+                        image: AssetImage(brightness == Brightness.light
+                            ? Assets.imagesHeadphone3
+                            : Assets.imagesHeadphone2),
                       ),
                     ),
                   ),
                 ],
               ),
               Container(
+                height: 280.0,
                 padding: EdgeInsets.symmetric(vertical: 15.0),
-                height: 250.0,
                 child: ListView.builder(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  controller: controller,
+                  itemExtent: 220.0,
+                  physics: BouncingScrollPhysics(),
                   itemCount: genres.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
@@ -73,10 +99,36 @@ class _MyHomePageState extends State<MyHomePage> {
                       genre: genres[index].genre,
                       image: genres[index].image,
                       cardColor: genres[index].cardColor,
+                      makeBigger:
+                          topContainerIndex.toInt() == index ? true : false,
                     );
                   },
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Favourite",
+                      style: nameTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+              ListView.builder(padding: EdgeInsets.only(top: 15.0),
+                shrinkWrap: true,
+                itemCount: favourites.length,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index){
+                  return FavouriteItem(
+                    image: favourites[index].image,
+                    title: favourites[index].title,
+                    singer: favourites[index].singer,
+                  );
+                },
+              ),
             ],
           ),
         ),
