@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:me_music/my_themes.dart';
 import 'package:me_music/screens/home/home_screen.dart';
-
-import 'constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,12 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Me Music',
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: kBackgroundColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: MyThemes.lightTheme,
+      darkTheme: MyThemes.darkTheme,
       home: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
