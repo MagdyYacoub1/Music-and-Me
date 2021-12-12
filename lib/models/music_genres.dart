@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:me_music/generated/assets.dart';
 
 class MusicGenres {
   String image;
@@ -15,47 +16,48 @@ class MusicGenres {
 List<MusicGenres> genres = [
   MusicGenres(
     genre: "Ambient",
-    image: "thunder.png",
+    image: Assets.imagesThunder,
     cardColor: Color(0xFF2B159E),
   ),
   MusicGenres(
     genre: "Hip Hop",
-    image: "geography.png",
+    image: Assets.imagesGeography,
     cardColor: Color(0xFF159E96),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Rock",
+    image: Assets.imagesRock,
+    cardColor: Color(0xFF3b5998),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Electronic",
+    image: Assets.imagesElectronic,
+    cardColor: Color(0xFF800080),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Folk",
+    image: Assets.imagesFolk,
+    cardColor: Color(0xFF77AB59),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Jazz",
+    image: Assets.imagesJazz,
+    cardColor: Color(0xFF536872),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Classic",
+    image: Assets.imagesTrebleClef,
+    cardColor: Color(0xFF9E379F),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Metal",
+    image: Assets.imagesMetal,
+    cardColor: Color(0xFFFF6289),
   ),
   MusicGenres(
-    genre: "Hip Hop",
-    image: "geography.png",
-    cardColor: Color(0xFF159E96),
+    genre: "Disco",
+    image: Assets.imagesDisco,
+    cardColor: Color(0xFF493267),
   ),
+
 ];
