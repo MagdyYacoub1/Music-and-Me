@@ -15,15 +15,37 @@ const TextStyle nameTextStyle = TextStyle(
 
 const TextStyle contextTextStyle = TextStyle(
   fontSize: 23.0,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
 );
 const TextStyle secondaryContextTextStyle = TextStyle(
   fontSize: 17.0,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w400,
   color: kGreyColor,
 );
-const TextStyle contextGreyTextStyle = TextStyle(
+
+const TextStyle albumTextStyle = TextStyle(
+  fontSize: 40.0,
+  fontWeight: FontWeight.w900,
+  color: kContextColor
+);
+
+const TextStyle contextWhiteTextStyle = TextStyle(
   fontSize: 23.0,
   color: kContextColor,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
 );
+
+const TextStyle contextWhiteSmallTextStyle = TextStyle(
+  fontSize: 17.0,
+  color: kContextColor,
+  fontWeight: FontWeight.w500,
+);
+
+Color lighten(Color color, [double amount = 0.1]) {
+  assert(amount >= 0 && amount <= 1);
+
+  final hsl = HSLColor.fromColor(color);
+  final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+
+  return hslLight.toColor();
+}

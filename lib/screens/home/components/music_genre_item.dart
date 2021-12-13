@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -77,13 +76,13 @@ class MusicGenreItem extends StatelessWidget {
                         AssetImage(
                           image,
                         ),
-                        size: 40.0,
+                        size: 35.0,
                         color: kContextColor,
                       ),
                       SizedBox(height: 7.0),
                       Text(
                         genre,
-                        style: contextGreyTextStyle,
+                        style: contextWhiteTextStyle,
                       ),
                     ],
                   ),
