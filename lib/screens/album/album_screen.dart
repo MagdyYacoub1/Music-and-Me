@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:me_music/generated/assets.dart';
 import 'package:me_music/models/song.dart';
 
-import '../../constants.dart';
 import 'components/Header.dart';
 import 'components/album_song.dart';
 
 class AlbumsScreen extends StatelessWidget {
-  const AlbumsScreen({Key? key}) : super(key: key);
+  const AlbumsScreen({
+    Key? key,
+    required this.image,
+    required this.genre,
+    required this.albumColor,
+    required this.albumSongs,
+  }) : super(key: key);
+
+  final String image;
+  final String genre;
+  final Color albumColor;
+  final List<Song> albumSongs;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    const Color albumColor = Color(0xFF2B159E);
     const double heightPercentage = 0.55;
     return Scaffold(
       body: Stack(
@@ -60,6 +68,8 @@ class AlbumsScreen extends StatelessWidget {
           Header(
             height: size.height * heightPercentage,
             albumColor: albumColor,
+            albumName: genre,
+            albumImage: image,
           ),
         ],
       ),

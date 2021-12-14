@@ -101,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       cardColor: genres[index].cardColor,
                       makeBigger:
                           topContainerIndex.toInt() == index ? true : false,
+                      albumSongs: genres[index].albumSongs,
                     );
                   },
                 ),

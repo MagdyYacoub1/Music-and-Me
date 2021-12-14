@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:me_music/my_themes.dart';
-import 'package:me_music/screens/album/album_screen.dart';
 import 'package:me_music/screens/home/home_screen.dart';
 
 void main() {
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
             statusBarBrightness: Brightness.dark,
             systemNavigationBarColor: Colors.transparent,
             systemNavigationBarIconBrightness: Brightness.dark),
-        child: AlbumsScreen(),
+        child: MyHomePage(),
       ),
     );
   }

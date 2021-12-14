@@ -7,10 +7,14 @@ class Header extends StatelessWidget {
     Key? key,
     required this.height,
     required this.albumColor,
+    required this.albumName,
+    required this.albumImage,
   }) : super(key: key);
 
   final double height;
   final Color albumColor;
+  final String albumName;
+  final String albumImage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,11 @@ class Header extends StatelessWidget {
             left: 15.0,
             bottom: arcRadius + 45,
           ),
-          child: AlbumHeaderAndDetails(albumColor: albumColor),
+          child: AlbumHeaderAndDetails(
+            albumColor: albumColor,
+            albumName: albumName,
+            albumImage: albumImage,
+          ),
         ),
       ),
     );

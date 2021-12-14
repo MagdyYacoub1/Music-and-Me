@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:me_music/generated/assets.dart';
 
 import '../../../constants.dart';
 
@@ -7,9 +6,13 @@ class AlbumHeaderAndDetails extends StatelessWidget {
   const AlbumHeaderAndDetails({
     Key? key,
     required this.albumColor,
+    required this.albumName,
+    required this.albumImage,
   }) : super(key: key);
 
   final Color albumColor;
+  final String albumName;
+  final String albumImage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +24,22 @@ class AlbumHeaderAndDetails extends StatelessWidget {
           // ----------Search Bar----------
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: lighterColor,
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  size: 15.0,
-                  color: Colors.white,
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: lighterColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 15.0,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -66,12 +74,15 @@ class AlbumHeaderAndDetails extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ImageIcon(
-              AssetImage(
-                Assets.imagesThunder,
+            Hero(
+              tag: albumName,
+              child: ImageIcon(
+                AssetImage(
+                  albumImage,
+                ),
+                size: 35.0,
+                color: kGreyColor,
               ),
-              size: 35.0,
-              color: kGreyColor,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25.0),
@@ -79,7 +90,7 @@ class AlbumHeaderAndDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    "Ambient",
+                    albumName,
                     style: albumTextStyle,
                   ),
                   Text(
