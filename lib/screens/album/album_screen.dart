@@ -21,13 +21,14 @@ class AlbumsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    const double heightPercentage = 0.55;
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    const double heightPercentage = 0.50;
     return Scaffold(
       body: Stack(
         children: [
           Container(
             height: size.height * heightPercentage,
-            color: Colors.black,
+            color: brightness == Brightness.light? Colors.black: Colors.white,
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -37,17 +38,15 @@ class AlbumsScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(100.0),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(
-                      top: 80,
-                    ),
+                    padding: const EdgeInsets.only(top: 27.0),
                     child: ListView.builder(
-                      padding: EdgeInsets.zero,
+                      padding: EdgeInsets.only(top: 50.0),
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
                       itemCount: albumSongs.length,

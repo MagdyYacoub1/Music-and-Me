@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Brightness brightness = MediaQuery.of(context).platformBrightness;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Center(
           child: Column(
             children: <Widget>[

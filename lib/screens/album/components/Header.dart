@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
         color: albumColor.withOpacity(0.96),
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 35.0,
+            top: 45.0,
             left: 15.0,
             bottom: arcRadius + 45,
           ),

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyThemes{
   static final darkTheme = ThemeData(
-    fontFamily: 'Poppins',
     scaffoldBackgroundColor: Colors.grey.shade900,
     colorScheme: ColorScheme.dark(),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
+    //visualDensity: VisualDensity.adaptivePlatformDensity,
+    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
   );
 
   static final lightTheme = ThemeData(
-    fontFamily: 'Poppins',
     scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
+    //visualDensity: VisualDensity.adaptivePlatformDensity,
+    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
   );
 }
