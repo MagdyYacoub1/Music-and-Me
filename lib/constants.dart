@@ -10,12 +10,12 @@ const double kDefaultPadding = 20.0;
 
 const TextStyle nameTextStyle = TextStyle(
   fontSize: 40.0,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w800,
 );
 
 const TextStyle contextTextStyle = TextStyle(
   fontSize: 23.0,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w700
 );
 
 
