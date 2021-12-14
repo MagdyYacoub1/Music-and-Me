@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:me_music/generated/assets.dart';
+import 'package:me_music/models/song.dart';
 
+import '../../constants.dart';
 import 'components/Header.dart';
+import 'components/album_song.dart';
 
 class AlbumsScreen extends StatelessWidget {
   const AlbumsScreen({Key? key}) : super(key: key);
@@ -20,7 +24,7 @@ class AlbumsScreen extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: size.height * heightPercentage - 135),
+              SizedBox(height: size.height * heightPercentage - 127),
               Expanded(
                 child: Container(
                   width: double.infinity,
@@ -28,6 +32,25 @@ class AlbumsScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(100.0),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 80,
+                    ),
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      physics: BouncingScrollPhysics(),
+                      itemCount: albumSongs.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AlbumSong(
+                          name: albumSongs[index].name,
+                          singer: albumSongs[index].singer,
+                          duration: albumSongs[index].duration,
+                          cover: albumSongs[index].cover,
+                        );
+                      },
                     ),
                   ),
                 ),

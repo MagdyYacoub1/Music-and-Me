@@ -2,12 +2,15 @@
 class Assets {
   Assets._();
 
+  static const String imagesAdele1 = 'assets/images/adele1.jpg';
+  static const String imagesAdele2 = 'assets/images/adele2.jpg';
   static const String imagesCover1 = 'assets/images/cover1.jpg';
   static const String imagesCover2 = 'assets/images/cover2.jpeg';
   static const String imagesCover3 = 'assets/images/cover3.jpeg';
   static const String imagesCover4 = 'assets/images/cover4.jpg';
   static const String imagesCover5 = 'assets/images/cover5.jpg';
   static const String imagesCover6 = 'assets/images/cover6.jpeg';
+  static const String imagesDefaultAlbumArt = 'assets/images/default_album_art.png';
   static const String imagesDisco = 'assets/images/disco.png';
   static const String imagesElectronic = 'assets/images/electronic.png';
   static const String imagesFolk = 'assets/images/folk.png';

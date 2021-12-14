@@ -17,6 +17,8 @@ const TextStyle contextTextStyle = TextStyle(
   fontSize: 23.0,
   fontWeight: FontWeight.w700,
 );
+
+
 const TextStyle secondaryContextTextStyle = TextStyle(
   fontSize: 17.0,
   fontWeight: FontWeight.w400,
@@ -40,6 +42,12 @@ const TextStyle contextWhiteSmallTextStyle = TextStyle(
   color: kContextColor,
   fontWeight: FontWeight.w500,
 );
+
+const TextStyle timeTextStyle = TextStyle(
+  fontSize: 17.0,
+  fontWeight: FontWeight.w700,
+);
+
 
 Color lighten(Color color, [double amount = 0.1]) {
   assert(amount >= 0 && amount <= 1);
