@@ -41,7 +41,7 @@ class FavouriteItem extends StatelessWidget {
                     width: 25.0,
                     height: 25.0,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50.0),
+                        shape: BoxShape.circle,
                         color: Colors.white),
                   ),
                 ),
