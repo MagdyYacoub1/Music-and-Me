@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 class ControlPanel extends StatefulWidget {
-  const ControlPanel({Key? key}) : super(key: key);
+  const ControlPanel({Key? key, required this.paletteColors}) : super(key: key);
+
+  final List<PaletteColor> paletteColors;
 
   @override
   _ControlPanelState createState() => _ControlPanelState();
@@ -50,7 +53,7 @@ class _ControlPanelState extends State<ControlPanel>
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xFF4125C1),
+                color: widget.paletteColors[1].color,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),

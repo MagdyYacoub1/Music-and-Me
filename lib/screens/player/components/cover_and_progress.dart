@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:me_music/generated/assets.dart';
+import 'package:palette_generator/palette_generator.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class CoverAndProgress extends StatelessWidget {
-  const CoverAndProgress({Key? key}) : super(key: key);
+  const CoverAndProgress({
+    Key? key,
+    required this.paletteColors,
+    required this.cover,
+  }) : super(key: key);
+
+  final List<PaletteColor> paletteColors;
+  final String cover;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +25,9 @@ class CoverAndProgress extends StatelessWidget {
         infoProperties: InfoProperties(),
         customColors: CustomSliderColors(
           trackColor: Color(0xFFE3E3E3),
-          dotColor: Color(0xFF4125C1),
-          progressBarColor: Color(0xFF4125C1),
-          shadowColor: Color(0xFFBCB1EC),
+          dotColor: paletteColors[1].color,
+          progressBarColor: paletteColors[0].color,
+          shadowColor: paletteColors[0].color,
         ),
         customWidths: CustomSliderWidths(
           progressBarWidth: progressBarWidth,
@@ -46,7 +53,7 @@ class CoverAndProgress extends StatelessWidget {
                     image: DecorationImage(
                       alignment: Alignment.centerLeft,
                       fit: BoxFit.cover,
-                      image: AssetImage(Assets.imagesAdele1),
+                      image: AssetImage(cover),
                     ),
                   ),
                 ),

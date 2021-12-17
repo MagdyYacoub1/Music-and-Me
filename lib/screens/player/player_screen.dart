@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 import '../../constants.dart';
 import 'components/control_panel.dart';
@@ -6,12 +7,16 @@ import 'components/cover_and_progress.dart';
 import 'components/options_panel.dart';
 
 class PlayerScreen extends StatelessWidget {
-  const PlayerScreen({Key? key}) : super(key: key);
+  const PlayerScreen(
+      {Key? key, required this.image, required this.paletteColors})
+      : super(key: key);
+
+  final String image;
+  final List<PaletteColor> paletteColors;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
     double heightPercentage = 0.25;
     return Scaffold(
       body: Stack(
@@ -19,47 +24,18 @@ class PlayerScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             height: size.height * heightPercentage,
-            color: brightness == Brightness.light? bgColorDarkTheme: Colors.white,
+            color: paletteColors[0].color,
             child: Padding(
               padding: const EdgeInsets.only(
                 top: 45.0,
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFF241B30),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: const Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            size: 15.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Text(
-                        "Ambient",
-                        textAlign: TextAlign.center,
-                        style: contextWhiteTextStyle,
-                      ),
-                    ),
-                  ),
-                ],
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  "Ambient",
+                  textAlign: TextAlign.center,
+                  style: contextWhiteTextStyle,
+                ),
               ),
             ),
           ),
@@ -78,14 +54,14 @@ class PlayerScreen extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 75.0,
-                      bottom: 10.0
-                    ),
+                    padding: const EdgeInsets.only(top: 75.0, bottom: 10.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CoverAndProgress(),
+                        CoverAndProgress(
+                          cover: image,
+                          paletteColors: paletteColors,
+                        ),
                         SizedBox(height: 25.0),
                         Column(
                           mainAxisSize: MainAxisSize.min,
@@ -104,8 +80,8 @@ class PlayerScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 30.0),
-                        ControlPanel(),
-                        SizedBox(height:70),
+                        ControlPanel(paletteColors: paletteColors),
+                        SizedBox(height: 70),
                         OptionsPanel(),
                       ],
                     ),
@@ -114,9 +90,34 @@ class PlayerScreen extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 45.0,
+              left: 15.0,
+            ),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+                print("tapped");
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: paletteColors[1].color,
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 15.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

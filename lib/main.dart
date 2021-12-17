@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:me_music/my_themes.dart';
-import 'package:me_music/screens/player/player_screen.dart';
+import 'package:me_music/screens/home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Me Music',
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: PlayerScreen(),
+      home: MyHomePage(),
     );
   }
 }
