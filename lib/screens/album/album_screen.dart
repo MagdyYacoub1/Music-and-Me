@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:me_music/models/song.dart';
 
+import '../../constants.dart';
 import 'components/Header.dart';
 import 'components/album_song.dart';
 
@@ -28,7 +29,7 @@ class AlbumsScreen extends StatelessWidget {
         children: [
           Container(
             height: size.height * heightPercentage,
-            color: brightness == Brightness.light? Colors.black: Colors.white,
+            color: brightness == Brightness.light? bgColorDarkTheme: Colors.white,
           ),
           Column(
             mainAxisSize: MainAxisSize.min,

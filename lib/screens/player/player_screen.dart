@@ -1,9 +1,9 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+import 'components/control_panel.dart';
 import 'components/cover_and_progress.dart';
+import 'components/options_panel.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({Key? key}) : super(key: key);
@@ -11,17 +11,15 @@ class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    //Brightness brightness = MediaQuery.of(context).platformBrightness;
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
     double heightPercentage = 0.25;
-    //Color lighterColor = lighten(Colors.grey, 0.2);
-
     return Scaffold(
       body: Stack(
         children: [
           Container(
             width: double.infinity,
             height: size.height * heightPercentage,
-            color: Colors.black,
+            color: brightness == Brightness.light? bgColorDarkTheme: Colors.white,
             child: Padding(
               padding: const EdgeInsets.only(
                 top: 45.0,
@@ -37,7 +35,7 @@ class PlayerScreen extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF424242),
+                          color: Color(0xFF241B30),
                           shape: BoxShape.circle,
                         ),
                         child: Padding(
@@ -66,26 +64,49 @@ class PlayerScreen extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 SizedBox(height: size.height * 0.15),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60.0),
                       topRight: Radius.circular(60.0),
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 100.0,
-                      horizontal: 30.0,
+                    padding: const EdgeInsets.only(
+                      top: 75.0,
+                      bottom: 10.0
                     ),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         CoverAndProgress(),
+                        SizedBox(height: 25.0),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Hello",
+                              overflow: TextOverflow.ellipsis,
+                              style: contextTextStyle,
+                            ),
+                            Text(
+                              "Adele",
+                              overflow: TextOverflow.ellipsis,
+                              style: secondaryContextTextStyle,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 30.0),
+                        ControlPanel(),
+                        SizedBox(height:70),
+                        OptionsPanel(),
                       ],
                     ),
                   ),
@@ -98,3 +119,4 @@ class PlayerScreen extends StatelessWidget {
     );
   }
 }
+

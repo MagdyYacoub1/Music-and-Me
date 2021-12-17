@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // Colors that we use in our app
 const kTextColor = Colors.black;
+const bgColorDarkTheme = Color(0xff212121);
 const kContextColor = Color(0xFFFFFFF4);
 const kGreyColor = Colors.grey;
 
