@@ -37,6 +37,8 @@ class AlbumSong extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => PlayerScreen(
                   image: cover ?? Assets.imagesDefaultAlbumArt,
+                  song: name,
+                  singer: singer,
                   paletteColors: _palette.paletteColors,
                 ),
               ),
@@ -96,7 +98,6 @@ class AlbumSong extends StatelessWidget {
       AssetImage(imagePath),
       maximumColorCount: 2,
     );
-    print(_paletteGenerator.toString());
     return _paletteGenerator;
   }
 }

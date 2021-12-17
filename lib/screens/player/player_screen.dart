@@ -7,12 +7,18 @@ import 'components/cover_and_progress.dart';
 import 'components/options_panel.dart';
 
 class PlayerScreen extends StatelessWidget {
-  const PlayerScreen(
-      {Key? key, required this.image, required this.paletteColors})
-      : super(key: key);
+  const PlayerScreen({
+    Key? key,
+    required this.image,
+    required this.paletteColors,
+    required this.song,
+    required this.singer
+  }) : super(key: key);
 
   final String image;
   final List<PaletteColor> paletteColors;
+  final String song;
+  final String singer;
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +74,12 @@ class PlayerScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Hello",
+                              song,
                               overflow: TextOverflow.ellipsis,
                               style: contextTextStyle,
                             ),
                             Text(
-                              "Adele",
+                              singer,
                               overflow: TextOverflow.ellipsis,
                               style: secondaryContextTextStyle,
                             ),
@@ -98,7 +104,6 @@ class PlayerScreen extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.pop(context);
-                print("tapped");
               },
               child: Container(
                 decoration: BoxDecoration(
