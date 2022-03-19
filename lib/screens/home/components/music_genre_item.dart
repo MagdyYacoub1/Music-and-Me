@@ -20,7 +20,6 @@ class MusicGenreItem extends StatelessWidget {
   final bool makeBigger;
   final List<Song> albumSongs;
 
-
   void showAlbumScreen(BuildContext context) {
     Navigator.push(
       context,
@@ -39,7 +38,8 @@ class MusicGenreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => showAlbumScreen(context),
-      child: Container(
+      child: AnimatedContainer(
+        duration: kDefaultDuration,
         width: 190.0,
         margin: EdgeInsets.only(
           left: 15.0,
